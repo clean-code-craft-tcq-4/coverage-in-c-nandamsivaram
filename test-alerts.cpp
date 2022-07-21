@@ -9,17 +9,21 @@
 
 TEST_CASE("Test checkAndAlert functionality")
 { 
-  REQUIRE(checkAndAlert(TO_CONTROLLER, PASSIVE_COOLING,-5) == 1);
-  REQUIRE(checkAndAlert(TO_CONTROLLER, PASSIVE_COOLING,15) == 0);
-  REQUIRE(checkAndAlert(TO_CONTROLLER, PASSIVE_COOLING,40) == 1);
+ BatteryCharacter batteryChar;
+ batteryChar.coolingType = PASSIVE_COOLING;
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar,-5) == 1);
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar,15) == 0);
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar,40) == 1);
   
-  REQUIRE(checkAndAlert(TO_EMAIL, HI_ACTIVE_COOLING,-10) == 1);
-  REQUIRE(checkAndAlert(TO_EMAIL, HI_ACTIVE_COOLING,15) == 0);
-  REQUIRE(checkAndAlert(TO_EMAIL, HI_ACTIVE_COOLING,50) == 1);
+  batteryChar.coolingType = HI_ACTIVE_COOLING;
+  REQUIRE(checkAndAlert(TO_EMAIL, batteryChar,-10) == 1);
+  REQUIRE(checkAndAlert(TO_EMAIL, batteryChar,15) == 0);
+  REQUIRE(checkAndAlert(TO_EMAIL, batteryChar,50) == 1);
   
-  REQUIRE(checkAndAlert(TO_CONTROLLER, MED_ACTIVE_COOLING,-15) == 1);
-  REQUIRE(checkAndAlert(TO_CONTROLLER, MED_ACTIVE_COOLING,15) == 0);
-  REQUIRE(checkAndAlert(TO_CONTROLLER, MED_ACTIVE_COOLING,41) == 1);
+  batteryChar.coolingType = MED_ACTIVE_COOLING;
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar,-15) == 1);
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar,15) == 0);
+  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar,41) == 1);
 }
 
 TEST_CASE("Test classifyTemperatureBreach functionality")
