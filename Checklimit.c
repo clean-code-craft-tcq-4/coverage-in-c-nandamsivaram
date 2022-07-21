@@ -29,15 +29,15 @@ void Check_Med_Active_Cooling(CoolingType coolingType, int* lowerlimit, int* upp
 	}
 }
 
-void set_up_limit(double value, double upperLimit, BreachType* breach)
+void set_up_limit(double value, double upperlimit, BreachType* breach)
 {
-	if(value > upperLimit)
+	if(value > upperlimit)
 	{
 		*breach = TOO_HIGH;
 	}
 }
 
-void set_low_limit(double value, double lowerLimit, BreachType* breach)
+void set_low_limit(double value, double lowerlimit, BreachType* breach)
 {
 	if(value < lowerlimit)
 	{
