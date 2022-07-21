@@ -6,8 +6,8 @@ void Check_Passive_Cooling(CoolingType coolingType, int* lowerlimit, int* upperl
 {
 	if(coolingType == PASSIVE_COOLING)
 	{
-	  *lowerLimit = 0;
-      *upperLimit = 35;
+	  *lowerlimit = 0;
+      *upperlimit = 35;
 	}
 }
 
@@ -15,8 +15,8 @@ void Check_Hi_Active_Cooling(CoolingType coolingType, int* lowerlimit, int* uppe
 {
 	if(coolingType == HI_ACTIVE_COOLING)
 	{
-	  *lowerLimit = 0;
-      *upperLimit = 45;
+	  *lowerlimit = 0;
+      *upperlimit = 45;
 	}
 }
 
@@ -24,8 +24,8 @@ void Check_Med_Active_Cooling(CoolingType coolingType, int* lowerlimit, int* upp
 {
 	if(coolingType == MED_ACTIVE_COOLING)
 	{
-	  *lowerLimit = 0;
-      *upperLimit = 40;
+	  *lowerlimit = 0;
+      *upperlimit = 40;
 	}
 }
 
