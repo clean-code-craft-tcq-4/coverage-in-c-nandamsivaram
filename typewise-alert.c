@@ -2,24 +2,24 @@
 #include <stdio.h>
 #include"Checklimit.h"
 
-BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
+BreachType inferBreach(double value, double lowerlimit, double upperlimit) {
  
  BreachType breach = NORMAL;
- set_up_limit(value, &upperLimit, &breach);
- set_low_limit(value, &lowerlimit, &breach);
+ set_up_limit(value, lowerlimit, &breach);
+ set_low_limit(value, upperlimit, &breach);
  
  return breach;
 }
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
+  int lowerlimit = 0;
+  int upperlimit = 0;
  
   Check_Passive_Cooling(coolingType, &lowerlimit, &upperlimit);
   Check_Hi_Active_Cooling(coolingType, &lowerlimit, &upperlimit);
   Check_Med_Active_Cooling(coolingType, &lowerlimit, &upperlimit);
 
-  return inferBreach(temperatureInC, lowerLimit, upperLimit);
+  return inferBreach(temperatureInC, lowerlimit, upperlimit);
 }
 
 bool checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
@@ -34,7 +34,7 @@ bool checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
 	return false;
 }
 
-void sendAlert(alertTarget, breachType)
+void sendAlert(AlertTarget alertTarget, BreachType breachType)
 {
 	if(alertTarget == TO_CONTROLLER)
 	{
@@ -62,5 +62,7 @@ void sendToEmail(BreachType breachType) {
       printf("To: %s\n", recepient);
       printf("Hi, the temperature is too high\n");
       break;
+	case NORMAL:
+		break;
   }
 }
