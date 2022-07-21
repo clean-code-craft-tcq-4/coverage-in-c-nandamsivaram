@@ -12,7 +12,7 @@ typedef enum {
   TOO_HIGH
 } BreachType;
 
-BreachType inferBreach(double value, double lowerLimit, double upperLimit);
+BreachType inferBreach(double value, double lowerlimit, double upperlimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 
 typedef enum {
@@ -30,4 +30,4 @@ bool checkAndAlert(
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
-void sendAlert(AlertTarget alertTarget, BreachTypebreachType);
+void sendAlert(AlertTarget alertTarget, BreachType breachType);
